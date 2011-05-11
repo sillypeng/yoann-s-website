@@ -2,7 +2,6 @@
 #main
 {
 	width: 1024px;
-	height: 900px;
 	margin-left: auto;
     margin-right: auto;
 	position:relative;
@@ -49,19 +48,18 @@
 	margin-left: 110px;
 }
 #sniper{
+	display: none;
 	position:relative;
 	margin-top:80px;
 	margin-left:110px;
 }
 #infopanel{
-	display: none;
 	margin-top:80px;
 	margin-left:110px;
 	clear:both;
 }
 
 .client{
-	margin-top:5px;
 	clear:both;
 }
 

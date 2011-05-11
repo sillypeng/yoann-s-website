@@ -67,17 +67,23 @@ $(document).ready( function() {
 	$("#logoButton").click( function() {
 		if(lock==0) {
 			lock=1;
-			$("#infopanel").css("display","none");
-			$("#workcontent").css("display","none");
-			$("#sniper").fadeIn("slow", function() {
+			if($("#infopanel").css("display")!="none") {
+				$("#infopanel").fadeOut(500, function() {
+					$("#sniper").fadeIn(500, function() {
+						lock=0;
+					});
+				}
+				);
+			} else if($("#workcontent").css("display")!="none") {
+				$("#workcontent").fadeOut(500, function() {
+					$("#sniper").fadeIn(500, function() {
+						lock=0;
+					});
+				}
+				);
+			} else
 				lock=0;
-			});
-			//	$("#workcontent").slideUp(500, function(){
-			//		$("#sniper").slideDown(500);
-			//	}
-			//	);
-		} else
-			lock=0;
+		};
 	});
 	$("#workarea").hover( function() {
 		$("#work").attr("src","img/bouton-work-gris.png");
@@ -85,8 +91,6 @@ $(document).ready( function() {
 	$("#workarea").click( function() {
 		if(lock==0) {
 			lock=1;
-			//	$("#sniper").css("display","none");
-			//	$("#workcontent").fadeIn("slow");
 			if($("#sniper").css("display")!="none") {
 				$("#sniper").fadeOut(500, function() {
 					$("#workcontent").fadeIn(500, function() {
@@ -114,28 +118,22 @@ $(document).ready( function() {
 	$("#informationarea").click( function() {
 		if(lock==0) {
 			lock=1;
-			//	$("#sniper").css("display","none");
-			//	$("#workcontent").fadeIn("slow");
 			if($("#sniper").css("display")!="none") {
-				$("#sniper").slideUp(500, function() {
-					$("#infopanel").slideDown(500, function() {
+				$("#sniper").fadeOut(500, function() {
+					$("#infopanel").fadeIn(500, function() {
 						lock=0;
 					});
 				}
 				);
 			} else if($("#workcontent").css("display")!="none") {
-				$("#workcontent").slideUp(500, function() {
-					$("#infopanel").slideDown(500, function() {
+				$("#workcontent").fadeOut(500, function() {
+					$("#infopanel").fadeIn(500, function() {
 						lock=0;
 					});
 				}
 				);
 			} else
 				lock=0;
-			//	$("#sniper").slideUp(500, function(){
-			//		$("#workcontent").slideDown(500);
-			//	}
-			//	);
 		};
 	});
 	$("#informationarea").mouseout( function() {
@@ -177,46 +175,46 @@ $(document).ready( function() {
 	$("#video6").mouseout( function() {
 		$("#video6").attr("src","img/video/110504-morgan2.png");
 	});
-	$("#client1").hover( function() {
+	$("#clientmap1").hover( function() {
 		$("#client1").attr("src","img/ailleursexactement-coul.png");
 	});
-	$("#client1").mouseout( function() {
+	$("#clientmap1").mouseout( function() {
 		$("#client1").attr("src","img/ailleursexactement-nb.png");
 	});
-	$("#client2").hover( function() {
+	$("#clientmap2").hover( function() {
 		$("#client2").attr("src","img/auditoire-coul.png" );
 	});
-	$("#client2").mouseout( function() {
+	$("#clientmap2").mouseout( function() {
 		$("#client2").attr("src","img/auditoire-nb.png" );
 	});
-	$("#client3").hover( function() {
+	$("#clientmap3").hover( function() {
 		$("#client3").attr("src","img/freshresearch-coul.png");
 	});
-	$("#client3").mouseout( function() {
+	$("#clientmap3").mouseout( function() {
 		$("#client3").attr("src","img/freshresearch-nb.png");
 	});
-	$("#client4").hover( function() {
+	$("#clientmap4").hover( function() {
 		$("#client4").attr("src","img/lachose-coul.png");
 	});
-	$("#client4").mouseout( function() {
+	$("#clientmap4").mouseout( function() {
 		$("#client4").attr("src","img/lachose-nb.png");
 	});
-	$("#client5").hover( function() {
+	$("#clientmap5").hover( function() {
 		$("#client5").attr("src","img/lestelecreateurs-coul.png");
 	});
-	$("#client5").mouseout( function() {
+	$("#clientmap5").mouseout( function() {
 		$("#client5").attr("src","img/lestelecreateurs-nb.png");
 	});
-	$("#client6").hover( function() {
+	$("#clientmap6").hover( function() {
 		$("#client6").attr("src","img/profirst-coul.png");
 	});
-	$("#client6").mouseout( function() {
+	$("#clientmap6").mouseout( function() {
 		$("#client6").attr("src","img/profirst-nb.png");
 	});
-	$("#client7").hover( function() {
+	$("#clientmap7").hover( function() {
 		$("#client7").attr("src","img/tbwa-coul.png");
 	});
-	$("#client7").mouseout( function() {
+	$("#clientmap7").mouseout( function() {
 		$("#client7").attr("src","img/tbwa-nb.png");
 	});
 });
