@@ -2,21 +2,22 @@
 #main
 {
 	width: 1024px;
+	height: 100%;
+	position:relative;
 	margin-left: auto;
     margin-right: auto;
-	position:relative;
 }
 #page
 {
 	position:absolute;
 	top:0px;
 	left:0px;
-	width: 1280px;
 }
 #logo{
 	width: 300px;
 	height: 75px;
 	float:left;
+	margin-left: 95px;
 }
 #links
 {
@@ -27,36 +28,35 @@
 #barre
 {
 	position:relative;
-	top:70px;
+	top:110px;
 	height:50px;
 	left:0px;
 	clear:both;
-	background-image:url(/img/ligne-ombreportee.png);
+	background-image:url(/img/line-bando.png);
 	background-repeat:repeat-x;
 }
 #content
 {
-	position:relative;
+	position:absolute;
 	top: 60px;
 	left:0px;
-	
 }
 #workcontent
 {
 	display: none;
 	margin-top:50px;
-	margin-left: 110px;
+	margin-left: 80px;
 }
 #sniper{
-	display: none;
 	position:relative;
 	margin-top:80px;
 	margin-left:110px;
 }
 #infopanel{
-	margin-top:80px;
+	position:relative;
+	display: none;
+	margin-top:55px;
 	margin-left:110px;
-	clear:both;
 }
 
 .client{
@@ -66,7 +66,7 @@
 .video{
 	cursor:pointer;
 	float:left;
-	margin:30px;
+	margin:34px;
 }
 
 #videoclip {
@@ -86,5 +86,92 @@
     left: 0;
     background: #000000;
     z-index: 1;
+}
+
+#descriptionPanel{
+	margin-top: 30px;
+	float:left;
+	width:227px;
+	font-family:Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	word-spacing:2px;
+	line-height: 19px;
+}
+
+#clientPanel{
+	margin-top: 30px;
+	margin-left:59px;
+	float:left;
+}
+
+#contactPanel{
+	float:left;
+	margin-left:73px;
+	margin-top: 30px;
+}
+
+.contactInput{
+	font-family:Helvetica, Arial, sans-serif;
+	background-color:#F4F4F4;
+	font-size: 12px;
+	width:250px;
+	margin-bottom: 10px;
+	border-style:none;
+	float: left;
+	color: #292929;
+}
+#author{
+	position:absolute;
+	margin-left: 230px;
+    font-family:Helvetica, Arial, sans-serif;
+	color:#999;
+	font-size: 12px;
+	bottom: 3px;
+}
+#zipeng{
+	font-weight: bold;
+	cursor:pointer;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-radius:3px;
+	-moz-border-radius:3px;
+}
+#gabi{
+	font-weight: bold;
+	cursor:pointer;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-radius:3px;
+	-moz-border-radius:3px;
+}
+#zipInfo{
+	display: none;
+	font-family:Helvetica, Arial, sans-serif;
+	position:absolute;
+	bottom:22px;
+	background-color:#F4F4F4;
+	color:#999;
+	margin-left: 250px;
+	padding: 7px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	font-size: 15px;
+}
+#gabiInfo{
+	display: none;
+	font-family:Helvetica, Arial, sans-serif;
+	position:absolute;
+	bottom:22px;
+	background-color:#F4F4F4;
+	color:#999;
+	margin-left: 460px;
+	padding: 7px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	font-size: 15px;
+}
+.floatleft{
+	float: left;
+}
 }
 

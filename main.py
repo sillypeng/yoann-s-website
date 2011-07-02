@@ -18,17 +18,33 @@ import os
 from google.appengine.ext.webapp import template
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util
+from google.appengine.api import mail
+from django.utils import simplejson
 
 
 class MainHandler(webapp.RequestHandler):
     def get(self):
 		template_values = {}
-		
 		path = os.path.join(os.path.dirname(__file__), 'main.html')
 		self.response.out.write(template.render(path, template_values))
+        
+class SendMailHandler(webapp.RequestHandler):
+    def post(self):
+        messageBody="message from YoannGarel.com:\n";
+#        messageBody += self.request.body;
+        dict=simplejson.loads(self.request.body);
+        messageBody+= "Name: " + dict["name"] +"\n";
+        messageBody+= "Email: " + dict["email"] +"\n";
+        messageBody+= "Message:\n" + dict["message"];
+        mail.send_mail(sender="<zipeng.wu@yoanngarel.com>",
+              to="<yoanng@hotmail.com>",
+              subject="someone left you a message on www.yoanngarel.com",
+              body=messageBody)
+        
 
 def main():
-    application = webapp.WSGIApplication([('/', MainHandler)],
+    application = webapp.WSGIApplication([('/', MainHandler),
+                                          ('/contact', SendMailHandler)],
                                          debug=True)
     util.run_wsgi_app(application)
 
