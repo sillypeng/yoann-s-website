@@ -325,4 +325,7 @@ $(document).ready( function() {
 			$("#gabiInfo").css("background-color","#F4F4F4");
 		}
 	});
+	$("#sniper").click( function() {
+		$("#sniper").html("<iframe src='http://player.vimeo.com/video/25123854?title=0&amp;byline=0&amp;portrait=0' width='800' height='450' frameborder='0'></iframe>");
+	});
 });

@@ -136,6 +136,9 @@
 	border-radius:3px;
 	-moz-border-radius:3px;
 }
+#sniper{
+	cursor:pointer;
+}
 #gabi{
 	font-weight: bold;
 	cursor:pointer;
