@@ -9,18 +9,21 @@ jQuery.preloadImages = function() {
 		jQuery("<img>").attr("src", arguments[i]);
 	}
 }
+
 var clip1 ="<iframe src='http://player.vimeo.com/video/6864953?title=0&amp;byline=0&amp;portrait=0' width='640' height='360' frameborder='0'></iframe>";
 var clip2 ="<iframe src='http://player.vimeo.com/video/5503825?title=0&amp;byline=0&amp;portrait=0' width='640' height='360' frameborder='0'></iframe>";
 var clip3 ="<iframe src='http://player.vimeo.com/video/14959205?title=0&amp;byline=0&amp;portrait=0' width='640' height='360' frameborder='0'></iframe>";
 var clip4 ="<iframe src='http://player.vimeo.com/video/5388651?title=0&amp;byline=0&amp;portrait=0' width='640' height='360' frameborder='0'></iframe>";
 var clip5 ="<iframe src='http://player.vimeo.com/video/9648208?title=0&amp;byline=0&amp;portrait=0' width='640' height='360' frameborder='0'></iframe>";
 var clip6 ="<iframe src='http://player.vimeo.com/video/6588265?title=0&amp;byline=0&amp;portrait=0' width='640' height='360' frameborder='0'></iframe>";
+var sniperv="<iframe src='http://player.vimeo.com/video/25123854?title=0&byline=0&portrait=0' width='800' height='450' frameborder='0'></iframe>";
 var lock=0;
 var zipToggle=0;
 var gabiToggle=0;
+var snipercounter=0;
 
 $(document).ready( function() {
-	$.preloadImages("img/tbwa-coul.png","img/profirst-coul.png","img/lestelecreateurs-coul.png","img/lachose-coul.png","img/freshresearch-coul.png","img/auditoire-coul.png","img/ailleursexactement-coul.png","img/information-gris.png","img/work-gris.png","img/video/110504-BETCLIC.png","img/video/110504-BETCLIC-noir.png","img/video/110504-BLYG.png","img/video/110504-BLYG-noir.png","img/video/110504-GAMEONE.png","img/video/110504-GAMEONE-noir.png","img/video/110504-HORDES-noir.png","img/video/110504-HORDES.png","img/video/110504-MORGAN1-noir.png","img/video/110504-MORGAN1.png","img/video/110504-MORGAN2-noir.png","img/video/110504-MORGAN2.png","img/spoke-coul.png");
+	$.preloadImages("img/information-gris.png","img/work-gris.png","img/video/sniperclip2.png","img/tbwa-coul.png","img/profirst-coul.png","img/lestelecreateurs-coul.png","img/lachose-coul.png","img/freshresearch-coul.png","img/auditoire-coul.png","img/ailleursexactement-coul.png","img/video/110504-BETCLIC.png","img/video/110504-BETCLIC-noir.png","img/video/110504-BLYG.png","img/video/110504-BLYG-noir.png","img/video/110504-GAMEONE.png","img/video/110504-GAMEONE-noir.png","img/video/110504-HORDES-noir.png","img/video/110504-HORDES.png","img/video/110504-MORGAN1-noir.png","img/video/110504-MORGAN1.png","img/video/110504-MORGAN2-noir.png","img/video/110504-MORGAN2.png","img/spoke-coul.png");
 
 	$(".video").click( function(e) {
 		$("#background").css({
@@ -304,14 +307,14 @@ $(document).ready( function() {
 	});
 	$("#gabi").hover( function() {
 		if(gabiToggle==0) {
-		$(this).css("background-color","#F4F4F4");
-		$("#gabiInfo").fadeIn(400);
+			$(this).css("background-color","#F4F4F4");
+			$("#gabiInfo").fadeIn(400);
 		}
 	});
 	$("#gabi").mouseout( function() {
 		if(gabiToggle==0) {
-		$(this).css("background-color","#FFF");
-		$("#gabiInfo").fadeOut(400);
+			$(this).css("background-color","#FFF");
+			$("#gabiInfo").fadeOut(400);
 		}
 	});
 	$("#gabi").click( function() {
@@ -325,7 +328,27 @@ $(document).ready( function() {
 			$("#gabiInfo").css("background-color","#F4F4F4");
 		}
 	});
-	$("#sniper").click( function() {
-		$("#sniper").html("<iframe src='http://player.vimeo.com/video/25123854?title=0&amp;byline=0&amp;portrait=0' width='800' height='450' frameborder='0'></iframe>");
+	$("#img_sniper").click( function() {
+		$(this).css("display","none");
+		$("#snipervimeo").html(sniperv);
+		$("#background2").css({
+				"opacity" : "0.85"
+			})
+			.fadeIn("slow");
 	});
+	
+	$("#background2").click( function() {
+		$(this).fadeOut("normal");
+		$("#img_sniper").css("display","block");
+		$("#snipervimeo").html("");
+	});
+	
+	$("#img_sniper").hover( function() {
+		$("#img_sniper").attr("src","img/video/sniperclip2.png");
+	});
+	$("#img_sniper").mouseout( function() {
+		$("#img_sniper").attr("src","img/video/sniperclip1.png");
+	});
+	
+
 });
