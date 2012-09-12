@@ -1,7 +1,7 @@
 /* author: Zipeng WU */
-var clipList = new Array("33348669","33270207","25123854","14959205","5388651","6864953","6588265","9648208","5503825");
-var videoList = new Array("33348669-LEPARC2BLAIRWITCHENDING","33270207-LEPARC2HAPPYENDING","25123854-LESNIPER","110504-GAMEONE","110504-HORDES","110504-BETCLIC","110504-MORGAN1","110504-MORGAN2","110504-BLYG");
-var clientList = new Array("wandaproduction","auditoire","freshresearch","lachose","lestelecreateurs","profirst","tbwa","spoke");
+var clipList = new Array("33348669","33270207","25123854","14959205","5388651","6864953","6588265","9648208","5503825","49233752","49231980","49232218");
+var videoList = new Array("33348669-LEPARC2BLAIRWITCHENDING","33270207-LEPARC2HAPPYENDING","25123854-LESNIPER","110504-GAMEONE","110504-HORDES","110504-BETCLIC","110504-MORGAN1","110504-MORGAN2","110504-BLYG","110504-BOUYGUES","110504-PIRELLIHORSE","110504-PIRELLIFRESQUE");
+var clientList = new Array("wandaproduction","auditoire","freshresearch","lachose","lestelecreateurs","profirst","tbwa","spoke","yellowz");
 var otherImgList = new Array("information","work","send");
 var lock=0;
 var zipToggle=0;
