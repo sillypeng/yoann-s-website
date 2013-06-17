@@ -1,12 +1,13 @@
 /* author: Zipeng WU */
-var clipList = new Array("33348669","33270207","25123854","14959205","5388651","6864953","6588265","9648208","5503825","49233752","49231980","49232218");
-var videoList = new Array("33348669-LEPARC2BLAIRWITCHENDING","33270207-LEPARC2HAPPYENDING","25123854-LESNIPER","110504-GAMEONE","110504-HORDES","110504-BETCLIC","110504-MORGAN1","110504-MORGAN2","110504-BLYG","110504-BOUYGUES","110504-PIRELLIHORSE","110504-PIRELLIFRESQUE");
-var clientList = new Array("wandaproduction","auditoire","freshresearch","lachose","lestelecreateurs","profirst","tbwa","spoke","yellowz");
-var otherImgList = new Array("information","work","send");
+var clipList = ["49589990","33348669","33270207","25123854","62622034","14959205","5388651","6864953","6588265","9648208","5503825","49233752"];
+var videoList = ["110504-TEARDROPS","33348669-LEPARC2BLAIRWITCHENDING","33270207-LEPARC2HAPPYENDING","25123854-LESNIPER","110504-ROQUEFORT","110504-GAMEONE","110504-HORDES","110504-BETCLIC","110504-MORGAN1","110504-MORGAN2","110504-BLYG","110504-BOUYGUES"];
+var clientList = ["wandaproduction","auditoire","freshresearch","lachose","lestelecreateurs","profirst","tbwa","spoke","yellowz"];
+var otherImgList = ["information","work","send"];
 var lock=0;
 var zipToggle=0;
 var gabiToggle=0;
 var snipercounter=0;
+var templateStr = '<img src="{{img}}" class="video" id="{{id}}"></img>'
 
 jQuery.fn.center = function () {
 	this.css("position","absolute");
@@ -29,7 +30,7 @@ var constructClip = function(str, width, height){
 	return "<iframe src='http://player.vimeo.com/video/"+ str +"?title=0&amp;byline=0&amp;portrait=0' width='"+ width +"' height='"+ height +"' frameborder='0'></iframe>";
 }
 
-var sniperv=constructClip("25123854","800","450");
+var sniperv=constructClip("58493481","800","450");
 
 //transform an image or an array of images
 var getImgPath = function(list, isVideo, isHover){
@@ -50,27 +51,57 @@ var getImgPath = function(list, isVideo, isHover){
 
 
 $(document).ready( function() {
+	$.preloadImages(getImgPath("welcome",true,true));
 	$.preloadImages(getImgPath(otherImgList,false,true));
 	$.preloadImages(getImgPath(videoList,true,true));
 	$.preloadImages(getImgPath(clientList,false,true));
-	$.preloadImages(getImgPath("sniperclip",true,true));
 	
+	var template = Mustache.compile(templateStr);
+	var $workcontent = $("#workcontent");
+	
+	for(var i = 0; i<videoList.length; i++){
+		var image = getImgPath(videoList[i],true,false);
+		var vid = "video" +i;
+		var view = {"img":image, "id": vid};
+		var tag = template(view);
+		$workcontent.append(tag);
+	}
+	
+		
 	$(".video").click( function(e) {
 		$("#background").css({
 			"opacity" : "0.85"
 		})
 		.fadeIn("slow");
 
-		for(var i = 1; i<=clipList.length; i++){
+		for(var i = 0; i<clipList.length; i++){
 			var video = "video" + i;
 			if($(this).attr("id")==video) {
-				$("#videoclip").html(constructClip(clipList[i-1],"640","360"));
+				$("#videoclip").html(constructClip(clipList[i],"640","360"));
 			}
 		}
 		$("#videoclip")
 		.center()
 		.fadeIn("slow");
 	});
+	$(".video").hover( function() {
+		for(var i = 0; i<videoList.length; i ++){
+			if($(this).attr("id") == "video" + i){
+				$(this).attr("src",getImgPath(videoList[i],true,true));
+				break;
+			}
+		}
+		
+	});
+	$(".video").mouseout( function() {
+		for(var i = 0; i<videoList.length; i ++){
+			if($(this).attr("id") == "video" + i){
+				$(this).attr("src",getImgPath(videoList[i],true,false));
+				break;
+			}
+		}
+	});
+	
 	$(document).keypress( function(e) {
 		if(e.keyCode==27) {
 			$("#background").fadeOut("slow");
@@ -78,23 +109,7 @@ $(document).ready( function() {
 		}
 	});
 	
-	$(".video").hover( function() {
-		for(var i = 1; i<=videoList.length; i ++){
-			if($(this).attr("id") == "video" + i){
-				$(this).attr("src",getImgPath(videoList[i-1],true,true));
-				break;
-			}
-		}
-		
-	});
-	$(".video").mouseout( function() {
-		for(var i = 1; i<=videoList.length; i ++){
-			if($(this).attr("id") == "video" + i){
-				$(this).attr("src",getImgPath(videoList[i-1],true,false));
-				break;
-			}
-		}
-	});
+	
 	
 	$(".clientClickMap").hover( function() {
 		for(var i = 1; i<=clientList.length; i ++){
@@ -319,9 +334,9 @@ $(document).ready( function() {
 	});
 	
 	$("#img_sniper").hover( function() {
-		$("#img_sniper").attr("src","img/video/sniperclip-over.png");
+		$("#img_sniper").attr("src","img/video/welcome-over.png");
 	});
 	$("#img_sniper").mouseout( function() {
-		$("#img_sniper").attr("src","img/video/sniperclip.png");
+		$("#img_sniper").attr("src","img/video/welcome.png");
 	});
 });

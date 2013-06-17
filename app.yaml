@@ -1,9 +1,16 @@
-application: yoanngarel822
+application: yoann-hrd
 version: 2
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: true
+
+default_expiration: "3d"
 
 handlers:
+- url: /
+  static_files: main.html
+  upload: main.html
+
 - url: /img/video
   static_dir: img/video
   
@@ -15,6 +22,7 @@ handlers:
   
 - url: /javascript
   static_dir: javascript
+  expiration: "10m"
   
-- url: .*
-  script: main.py
+- url: /.*
+  script: main.app

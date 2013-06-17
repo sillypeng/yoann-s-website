@@ -14,25 +14,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import os
-from google.appengine.ext.webapp import template
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp import util
+import webapp2
 from google.appengine.api import mail
-from django.utils import simplejson
+import json
 
 
-class MainHandler(webapp.RequestHandler):
-    def get(self):
-		template_values = {}
-		path = os.path.join(os.path.dirname(__file__), 'main.html')
-		self.response.out.write(template.render(path, template_values))
         
 class SendMailHandler(webapp.RequestHandler):
     def post(self):
         messageBody="message from YoannGarel.com:\n";
 #        messageBody += self.request.body;
-        dict=simplejson.loads(self.request.body);
+        dict=json.loads(self.request.body);
         messageBody+= "Name: " + dict["name"] +"\n";
         messageBody+= "Email: " + dict["email"] +"\n";
         messageBody+= "Message:\n" + dict["message"];
@@ -42,12 +34,6 @@ class SendMailHandler(webapp.RequestHandler):
               body=messageBody)
         
 
-def main():
-    application = webapp.WSGIApplication([('/', MainHandler),
-                                          ('/contact', SendMailHandler)],
+app = webapp2.WSGIApplication([('/contact', SendMailHandler)],
                                          debug=True)
-    util.run_wsgi_app(application)
 
-
-if __name__ == '__main__':
-    main()
