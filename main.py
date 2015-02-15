@@ -10,7 +10,7 @@ class SendMailHandler(webapp2.RequestHandler):
         messageBody+= "Name: " + dict.get("name") +"\n";
         messageBody+= "Email: " + dict["email"] +"\n";
         messageBody+= "Message:\n" + dict["message"];
-        mail.send_mail(sender="<zipeng.wu@yoanngarel.com>",
+        mail.send_mail(sender="<zipeng.wu@gmail.com>",
               to="<yoanng@hotmail.com>",
               subject="someone left you a message on www.yoanngarel.com",
               body=messageBody)
